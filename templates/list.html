@@ -1,0 +1,44 @@
+{% extends 'layout/base.html' %}
+{% load static humanize %}
+
+{% block body %}
+<div x-data="">
+    <h1>Cervezas</h1>
+    {% include '_item.html' %}
+</div>
+<div x-data="{ open: false, selectedFilters: [], selectedCount: 0}">
+    <div id="filter-modal" x-show="open" class="absolute bottom-0 mb-24 bg-white">
+        <h3 class="font-bold border-b-2 border-b-gray-200 py-4">Filtros</h3>
+        <ul>
+            <li class="flex border-b-gray-200 border-b-2 px-4 py-2">
+                <div class="flex items-center justify-between w-full">
+                    <h5>Rubia</h5>
+                    <input type="checkbox"/>
+                </div>
+            </li>
+            <li class="flex border-b-gray-200 border-b-2 px-4 py-2">
+                <div class="flex items-center justify-between w-full">
+                <h5>Morena</h5>
+                <input type="checkbox"/>
+            </div>
+        </li>
+            <li class="flex border-b-gray-200 border-b-2 px-4 py-2">
+                <div class="flex items-center justify-between w-full">
+                <h5>Roja</h5>
+                <input type="checkbox"/>
+            </div>
+        </li>
+        </ul>
+        <div class="bg-gray-100 px-8 py-4">
+            <button class="px-8 py-2 font-bold mr-4 hover:bg-gray-200 duration-150 rounded">LIMPIAR</button>
+            <button class="px-8 py-2 font-bold bg-blue-800 hover:bg-blue-900 duration-150 text-white rounded">FILTRAR</button>
+        </div>
+    </div>
+
+    <button @click=" open = !open " x-text="{ selectedCount }" class="text-white bg-blue-800 hover:bg-blue-900 duration-150 font-bold px-4 py-2 rounded-lg">FILTRAR</button>        
+</div>
+{% endblock %}
+
+{% block js %}
+    <script type="module" src="{% static 'js/example.js' %}"></script>
+{% endblock %}

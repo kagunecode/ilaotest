@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static tailwind_tags %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:url" content="https://{{ request.get_host }}{{ request.get_full_path }}">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-title" content="axiacore">
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <link rel="apple-touch-icon-precomposed" href="{% static 'img/apple-touch-icon.png' %}">
+        <link rel="icon" href="{% static 'img/favicon.png' %}">
+        {% block css %}
+            {% tailwind_css %}
+        {% endblock %}
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body class="{% block body_classes %}{% endblock %} justify-between flex flex-col h-screen">
+        <nav class="flex justify-between bg-zinc-500 px-4 items-center h-16">
+            <div class="fill-white">{% include 'svg/menu.svg' %}</div>
+            <div class="flex gap-2">
+                <div class="fill-white">{% include 'svg/search.svg' %}</div>
+                <div class="fill-white">{% include 'svg/cart.svg' %}</div>
+            </div>
+        </nav>
+        {% block body %}
+        {% endblock body %}
+        {% block js %}
+        {% endblock %}
+        <div class="bg-black py-8 flex items-center flex-col">
+            <h3 class="text-white font-bold mb-4">Podemos Ayudarle?</h3>
+            <div class="flex gap-4 items-center justify-center">
+                
+                <div class="flex justify-center flex-col items-center gap-2">
+                    <div class="rounded-full bg-white flex items-center justify-center px-4 py-4">
+                        {% include 'svg/intercom.svg' %}
+                    </div>
+                    <h4 class="text-white font-bold">CHAT</h4>
+                </div>
+
+                <div class="flex justify-center flex-col items-center gap-2">
+                    <div class="rounded-full bg-white flex items-center justify-center px-4 py-4">
+                        {% include 'svg/phone.svg' %}
+                    </div>
+                    <h4 class="text-white font-bold">LLAMAR</h4>
+                </div>
+            </div>
+        </div>
+        <footer class="flex flex-col items-center gap-4 mt-4">
+            <a class="font-bold uppercase" href="#">Sobre Nosotros</a>
+            <a class="font-bold uppercase" href="#">Medidas de Seguridad</a>
+            <a class="font-bold uppercase" href="#">Como Mercar</a>
+            <a class="font-bold uppercase" href="#">Proovedores</a>
+            <a class="font-bold uppercase" href="#">Contactenos</a>
+            <a class="font-bold uppercase" href="#">Zona de Cobertura</a>
+
+            <div class="mt-4 flex flex-col items-center">
+                <div class="rounded-full p-4 bg-blue-800">{% include 'svg/instagram.svg' %}</div>
+                <a class="font-bold uppercase" href="#">Politica de tratamiento de datos personales</a>
+            </div>
+
+        </footer>
+    </body>
+</html>
